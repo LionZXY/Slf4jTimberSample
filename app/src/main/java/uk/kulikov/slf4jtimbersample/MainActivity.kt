@@ -10,11 +10,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import timber.log.Timber
 import uk.kulikov.slf4jtimbersample.ui.theme.MyApplicationTheme
 
+
 class MainActivity : ComponentActivity() {
+    private val logger: Logger = LoggerFactory.getLogger(MainActivity::class.java)
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Timber.i("#onCreate from Timber")
+        logger.atInfo().log("#onCreate from slf4j")
         setContent {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
